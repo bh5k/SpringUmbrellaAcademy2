@@ -1,6 +1,7 @@
 package com.example.SpringUmbrellaAcademy2;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Component;
 import java.time.LocalDate;
 
 @Component
+@Qualifier("firstUmbrellaAcademy")
 public class UmbrellaAcademy {
     private IPublicServiceAnnouncement publicServiceAnnouncement;
     private INationalWeatherService nationalWeatherService;
@@ -24,7 +26,9 @@ public class UmbrellaAcademy {
         this.nationalWeatherService = nationalWeatherService;
     }
 
-    public UmbrellaAcademy()  {}
+    public UmbrellaAcademy()  {
+
+    }
 
     public boolean shouldICarryAnUmbrella(String location)  {
         boolean shouldICarry = false;
@@ -46,7 +50,7 @@ public class UmbrellaAcademy {
         return publicServiceAnnouncement;
     }
 
-
+    //@Autowired
     public void setPublicServiceAnnouncement(IPublicServiceAnnouncement publicServiceAnnouncement) {
         this.publicServiceAnnouncement = publicServiceAnnouncement;
     }
@@ -55,6 +59,8 @@ public class UmbrellaAcademy {
         return nationalWeatherService;
     }
 
+    @Autowired
+    @Qualifier("alternateWeatherService")
     public void setNationalWeatherService(INationalWeatherService nationalWeatherService) {
         this.nationalWeatherService = nationalWeatherService;
     }

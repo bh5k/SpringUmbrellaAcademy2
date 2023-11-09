@@ -1,14 +1,14 @@
 package com.example.SpringUmbrellaAcademy2;
 
-
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.PropertySource;
 
-
 @SpringBootApplication
 @PropertySource("classpath:application.properties")
+@Slf4j
 public class SpringUmbrellaAcademy2Application {
 
 	public static void main(String[] args) {
@@ -22,10 +22,10 @@ public class SpringUmbrellaAcademy2Application {
 		academy.shouldICarryAnUmbrella("Cleveland");
 
 		String nwsName = academy.getNationalWeatherService().getName();;
-		System.out.println("\nThese forecasts were brought to you by " + nwsName + "\n");
+		log.debug("\nThese forecasts were brought to you by " + nwsName + "\n");
 
-		System.out.println(academy.getSlogan());
-		System.out.println("The Umbrella Academy was founded on " + academy.getDateFounded().toString());
+		log.debug(academy.getSlogan());
+		log.debug("The Umbrella Academy was founded on " + academy.getDateFounded().toString());
 	}
 }
 
